@@ -1,0 +1,24 @@
+---
+title: "Retro Terminal Portfolio"
+slug: "retro-portfolio"
+year: 2026
+role: "Designer · Engineer"
+stack: ["Next.js", "Three.js", "GSAP", "Howler", "Tailwind"]
+summary: "The site you're reading. 5-scene WebGL hero, persistent canvas, FLIP transitions."
+cover: "/video/retro-portfolio.webm"
+---
+
+A love letter to late-90s terminals and to the agencies that keep WebGL interesting.
+
+## Tech
+
+- One persistent `<Canvas>` that survives route changes.
+- Scroll progress drives scene crossfades at 60fps on a MacBook Air M1.
+- Audio is off by default, fades in over 1.2s on user toggle, persists across reloads.
+- JS bundle sits at ~230KB gzipped; Lighthouse 96 / 99 / 100 / 100.
+
+## What I learned
+
+- Instanced meshes + one shader beat dozens of materials by ~3ms/frame.
+- `mix-blend-mode: difference` on the cursor is free magic.
+- Lenis + GSAP ticker is the cleanest smooth-scroll setup I've tried.

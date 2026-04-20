@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg: #0A0A0A;
+    --bg-elev: #131313;
+    --fg: #F2EFE6;
+    --fg-dim: #8A8A82;
+    --signal: #00E5FF;
+    --danger: #FF3B30;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: var(--font-display), system-ui, sans-serif;
+}
+
+::selection {
+    background: var(--signal);
+    color: var(--bg);
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    42% {
+        opacity: 0.2;
+    }
+
+    43% {
+        opacity: 1;
+    }
+
+    48% {
+        opacity: 0.4;
+    }
+
+    49% {
+        opacity: 1;
+    }
+}
+
+.flicker {
+    animation: flicker 6s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee {
+    animation: marquee 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .flicker,
+    .marquee {
+        animation: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.cursor-none,
+.cursor-none * {
+    cursor: none;
+}
+
+@media (hover: none) {
+
+    .cursor-none,
+    .cursor-none * {
+        cursor: auto;
+    }
+}
+
+/* Focus-visible ring for keyboard users only */
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+}

@@ -1,0 +1,29 @@
+---
+title: "Aqua-AI"
+slug: "aqua-ai"
+year: 2025
+role: "Founder · Full-stack"
+stack: ["Next.js", "FastAPI", "PyTorch", "PostgreSQL", "Docker"]
+summary: "AI platform that predicts drinking-water quality from sensor + satellite data."
+cover: "/video/aqua-ai.webm"
+---
+
+Aqua-AI ingests time-series data from low-cost IoT probes and fuses it with Sentinel-2
+imagery to forecast turbidity, pH, and heavy-metal contamination 24 hours ahead.
+
+## Problem
+
+Municipalities in northern India only test water weekly. Failures propagate faster than that.
+
+## Approach
+
+- **Edge**: ESP32 with pH, TDS, and turbidity probes, sampling every 90s.
+- **Ingest**: FastAPI + TimescaleDB.
+- **Model**: A gated 1D-CNN over the last 6h of probe data, concatenated with latent
+  features from a ResNet-18 fine-tuned on Sentinel-2 patches.
+- **Delivery**: Next.js dashboard with per-ward risk scores and alert webhooks.
+
+## Outcome
+
+- 0.89 ROC-AUC on a held-out month from Delhi's Najafgarh drain cluster.
+- 14 hours median lead time on contamination events.
